@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  redis:
+    image: redis
+    networks:
+      app:
+        aliases:
+          - redis
+  node:
+    image: test-sov-api
+    volumes:
+      - ../..:/app
+    networks:
+      - app
+    build:
+      context: ../..
+      dockerfile: ./packages/sov-api/Dockerfile
+      args:
+        port: "${PORT}"
+    ports:
+      - "${PORT}:${PORT}"
+    command: yarn dev
+    depends_on:
+      - redis
+networks:
+  app:

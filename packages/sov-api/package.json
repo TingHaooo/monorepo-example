@@ -5,7 +5,15 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node ./src/server.ts",
-    "dev": "ts-node-dev ./src/server.ts"
+    "dev": "ts-node-dev ./src/server.ts",
+    "dev:docker:up": "docker-compose up",
+    "dev:docker:down": "docker-compose down",
+    "dev:docker:install": "docker-compose build",
+    "dev:docker:uninstall": "docker-compose down --rmi all",
+    "prod:docker:up": "docker-compose -f docker-compose.prod.yml up",
+    "prod:docker:down": "docker-compose -f docker-compose.prod.yml down",
+    "prod:docker:install": "docker-compose -f docker-compose.prod.yml build",
+    "prod:docker:uninstall": "docker-compose -f docker-compose.prod.yml down --rmi all"
   },
   "dependencies": {
     "connect-redis": "^4.0.4",
