@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  node:
+    image: test-sov-dashboard
+    volumes:
+      - ../..:/app
+    build:
+      context: ../..
+      dockerfile: ./packages/sov-crm/Dockerfile
+      args:
+        port: "${PORT}"
+    ports:
+      - "${PORT}:${PORT}"
+      - "${WEBPACK_PORT}:${WEBPACK_PORT}"
+    command: yarn start 
+    stdin_open: true
+    tty: true

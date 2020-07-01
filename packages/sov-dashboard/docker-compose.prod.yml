@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  node:
+    image: test-sov-dashboard
+    networks:
+      app:
+        aliases:
+          - node
+    build:
+      context: ../..
+      dockerfile: ./packages/sov-dashboard/Dockerfile
+      args:
+        port: "${PORT}"
+    command: yarn server
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - app
+    ports:
+      - 80:80
+    depends_on:
+      - node
+
+networks:
+  app:
