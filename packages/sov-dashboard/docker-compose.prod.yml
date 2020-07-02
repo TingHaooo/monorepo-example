@@ -11,6 +11,7 @@ services:
       dockerfile: ./packages/sov-dashboard/Dockerfile
       args:
         port: "${PORT}"
+        env: "${NODE_ENV}"
     command: yarn server
   nginx:
     image: nginx:alpine

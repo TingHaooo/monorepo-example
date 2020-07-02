@@ -6,9 +6,10 @@ services:
       - ../..:/app
     build:
       context: ../..
-      dockerfile: ./packages/sov-crm/Dockerfile
+      dockerfile: ./packages/sov-dashboard/Dockerfile
       args:
         port: "${PORT}"
+        env: "${NODE_ENV}"
     ports:
       - "${PORT}:${PORT}"
       - "${WEBPACK_PORT}:${WEBPACK_PORT}"

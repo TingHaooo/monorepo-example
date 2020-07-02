@@ -16,19 +16,19 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "server": "yarn build && ts-node-dev --project ../sov-api/tsconfig.json ./src/server.ts",
+    "server": "ts-node-dev --project ../sov-api/tsconfig.json ./src/server.ts",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev:docker:up": "docker-compose up",
-    "dev:docker:down": "docker-compose down",
-    "dev:docker:install": "docker-compose build",
-    "dev:docker:uninstall": "docker-compose down --rmi all",
-    "prod:docker:up": "docker-compose -f docker-compose.prod.yml up",
-    "prod:docker:down": "docker-compose -f docker-compose.prod.yml down",
-    "prod:docker:install": "docker-compose -f docker-compose.prod.yml build",
-    "prod:docker:uninstall": "docker-compose -f docker-compose.prod.yml down --rmi all"
+    "dev:docker:up": "NODE_ENV='devlopment' docker-compose up",
+    "dev:docker:down": "NODE_ENV='devlopment' docker-compose down",
+    "dev:docker:install": "NODE_ENV='devlopment' docker-compose build",
+    "dev:docker:uninstall": "NODE_ENV='devlopment' docker-compose down --rmi all",
+    "prod:docker:up": "NODE_ENV='production' docker-compose -f docker-compose.prod.yml up",
+    "prod:docker:down": "NODE_ENV='production' docker-compose -f docker-compose.prod.yml down",
+    "prod:docker:install": "NODE_ENV='production' docker-compose -f docker-compose.prod.yml build",
+    "prod:docker:uninstall": "NODE_ENV='production' docker-compose -f docker-compose.prod.yml down --rmi all"
   },
   "eslintConfig": {
     "extends": "react-app"
