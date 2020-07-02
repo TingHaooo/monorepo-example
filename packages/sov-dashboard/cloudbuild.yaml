@@ -1,0 +1,24 @@
+steps:
+#   # build the container image
+# - name: "gcr.io/cloud-builders/docker"
+#   args: ["build", "-t", "gcr.io/tough-bindery-276414/sov-dashboard-demo:v1", "../..", "-f" , "./packages/sov-dasboard/Dockerfile"]
+#   # push container image
+# - name: "gcr.io/cloud-builders/docker"
+#   args: ["push", "gcr.io/tough-bindery-276414/sov-dashboard-demo:v1"]
+#   # deploy container image to GKE
+# Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'run'
+  - 'deploy'
+  - 'sov-dasboard-demo'
+  - '--image'
+  - 'gcr.io/tough-bindery-276414/sov-dashboard-demo:v1'
+  - '--cluster'
+  - 'test-cloudrun-cluster'
+  - '--cluster-location'
+  - 'asia-east1-a'
+  - '--platform'
+  - 'gke'
+images:
+- 'gcr.io/tough-bindery-276414/sov-dashboard-demo:v1'
