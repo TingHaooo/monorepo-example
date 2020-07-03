@@ -1,0 +1,5 @@
+FROM node:lts
+COPY . /app
+WORKDIR /app/packages/sov-dashboard
+RUN yarn
+CMD yarn dev
